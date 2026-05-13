@@ -29,6 +29,20 @@ app.get("/users",async(req,res)=>{
     const users =await User.find();
     res.send(users);
 });
+//update user 
+app.get("/update",async(req,res)=>{
+    const userUpdated=await User.findOneAndUpdate(
+        {name:"piyu"},
+        //udating here 
+        {
+            age:22,
+            email:"piyuuuu@mail.com"
+        },
+        
+        { new:true }
+    );
+    res.send(userUpdated);
+});
 app.listen(3000,()=>{
     console.log("server started");
 });
