@@ -15,6 +15,7 @@ app.get("/",(req,res)=>{
     res.send("Server running");
 
 });
+
 //created user 
 app.get("/create",async(req,res)=>{
     const user=await User.create({
@@ -24,11 +25,13 @@ app.get("/create",async(req,res)=>{
     });
     res.send(users);
 });
+
 //read user
 app.get("/users",async(req,res)=>{
     const users =await User.find();
     res.send(users);
 });
+
 //update user 
 app.get("/update",async(req,res)=>{
     const userUpdated=await User.findOneAndUpdate(
@@ -43,6 +46,16 @@ app.get("/update",async(req,res)=>{
     );
     res.send(userUpdated);
 });
+
+//delete user 
+app.get("/delete",async(req,res)=>{
+    const userDeleted =await User.findOneAndDelete({
+    name:"piyu"
+    });
+    res.send("user deleted !!!!");
+
+});
+
 app.listen(3000,()=>{
     console.log("server started");
 });
