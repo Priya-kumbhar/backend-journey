@@ -15,13 +15,19 @@ app.get("/",(req,res)=>{
     res.send("Server running");
 
 });
+//created user 
 app.get("/create",async(req,res)=>{
     const user=await User.create({
         name:"piyu",    
         age:21,
         email:"piyu@gmail.com"
     });
-    res.send(user);
+    res.send(users);
+});
+//read user
+app.get("/users",async(req,res)=>{
+    const users =await User.find();
+    res.send(users);
 });
 app.listen(3000,()=>{
     console.log("server started");
